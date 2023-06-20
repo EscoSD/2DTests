@@ -30,6 +30,5 @@ func follow_player(delta):
 
 
 func rotate_detection_area():
-	var rotation_direction = (player.position - position).normalized()
+	var rotation_direction = (player.position - position)
 	detection_area.rotation = atan2(rotation_direction.y, rotation_direction.x)
-
