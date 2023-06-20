@@ -1,5 +1,6 @@
 extends CharacterBody2D
 #esto es un comentario hecho por el makako, Hesco tus muertos
+#comentario 2
 
 const SPEED = 100.0
 
