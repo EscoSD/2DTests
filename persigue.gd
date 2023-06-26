@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const speed = 20
+const speed = 50
 
 @export var player: Node2D
 @onready var nav_agent := $NavigationAgent2D as NavigationAgent2D
