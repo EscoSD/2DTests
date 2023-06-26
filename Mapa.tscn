@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cd120st2ja2d1"]
+[gd_scene load_steps=16 format=3 uid="uid://cd120st2ja2d1"]
 
 [ext_resource type="Texture2D" uid="uid://4l3ttfe8j0jj" path="res://Texture/TX Tileset Grass.png" id="1_4igrg"]
 [ext_resource type="Texture2D" uid="uid://bdhob05153mkj" path="res://Texture/TX Tileset Stone Ground.png" id="2_2wbby"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://tvajlc7ltwi5" path="res://player.tscn" id="3_cyf1n"]
 [ext_resource type="Texture2D" uid="uid://c4ufn5skvqlp3" path="res://Texture/TX Tileset Wall.png" id="4_y04u4"]
 [ext_resource type="PackedScene" uid="uid://c77fwxdqe5ptn" path="res://Enemy.tscn" id="6_8vxrh"]
+[ext_resource type="PackedScene" uid="uid://0g0j8n2bnjwj" path="res://persigue.tscn" id="7_mkotx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bjf72"]
 texture = ExtResource("1_4igrg")
@@ -1490,3 +1491,7 @@ collision_mask = 4
 
 [node name="Enemy" parent="." instance=ExtResource("6_8vxrh")]
 position = Vector2(388, 62)
+
+[node name="persigue" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_mkotx")]
+position = Vector2(757, 79)
+player = NodePath("../Player")

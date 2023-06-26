@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://0g0j8n2bnjwj"]
+
+[ext_resource type="Script" path="res://persigue.gd" id="1_6h8yw"]
+[ext_resource type="Texture2D" uid="uid://celke2pne8ynm" path="res://icon.svg" id="1_u5srk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xblml"]
+radius = 25.0
+
+[node name="persigue" type="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
+collision_layer = 2
+collision_mask = 3
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_6h8yw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.956863, 0.419608, 0.384314, 1)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_u5srk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xblml")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
