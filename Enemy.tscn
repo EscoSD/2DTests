@@ -1,10 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://c77fwxdqe5ptn"]
+[gd_scene load_steps=7 format=3 uid="uid://c77fwxdqe5ptn"]
 
 [ext_resource type="Script" path="res://Enemy.gd" id="1_qfwkc"]
 [ext_resource type="Texture2D" uid="uid://687jcs57eeso" path="res://Free Fantasy Dreamland - Sprites/Unity, Godot, GameMaker/Character_001.png" id="2_qds5q"]
+[ext_resource type="PackedScene" uid="uid://c3a8g566ct8c6" path="res://Dialogues/dialogue.tscn" id="3_cnut5"]
+[ext_resource type="Script" path="res://DialogueArea.gd" id="3_o1ede"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hsd8a"]
 size = Vector2(18, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5bpq2"]
+size = Vector2(28, 26)
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 2
@@ -26,6 +31,15 @@ vframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_hsd8a")
+
+[node name="DialogueArea" type="Area2D" parent="."]
+collision_layer = 0
+script = ExtResource("3_o1ede")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueArea"]
+shape = SubResource("RectangleShape2D_5bpq2")
+
+[node name="Dialogue" parent="." instance=ExtResource("3_cnut5")]
 
 [connection signal="body_entered" from="Area2D" to="." method="body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

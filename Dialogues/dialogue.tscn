@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3a8g566ct8c6"]
+
+[ext_resource type="Texture2D" uid="uid://cj6nyejegt0v4" path="res://Texture/TX Dialogue Box.png" id="1_jyus6"]
+[ext_resource type="Script" path="res://Dialogues/dialoguePlayer.gd" id="1_tqv1r"]
+[ext_resource type="JSON" path="res://Dialogues/json/chat_prueba.json" id="2_obf7y"]
+
+[node name="Dialogue" type="CanvasLayer"]
+script = ExtResource("1_tqv1r")
+d_file = ExtResource("2_obf7y")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+texture_filter = 1
+offset_left = 94.0
+offset_top = 388.0
+offset_right = 1059.0
+offset_bottom = 621.0
+texture = ExtResource("1_jyus6")
+patch_margin_left = 1
+patch_margin_right = 1
+
+[node name="Name" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 73.0
+offset_top = 29.0
+offset_right = 231.0
+offset_bottom = 94.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 35
+text = "Name"
+
+[node name="Chat" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 99.0
+offset_top = 83.0
+offset_right = 870.0
+offset_bottom = 213.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 30
+text = "Chatting..."
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
