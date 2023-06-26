@@ -6,12 +6,14 @@ const SPEED = 100.0
 var input_vector:= Vector2.ZERO
 var sprint:= 0.0
 
+
 @onready var animation_tree : AnimationTree = $AnimationTree
 
 
 func _ready():
 	animation_tree.active = true
 	animation_tree['parameters/Idle/blend_position'] = Vector2.DOWN
+	
 
 
 func _process(_delta):
