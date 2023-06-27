@@ -63,6 +63,7 @@ func _input(event):
 			$NinePatchRect/Chat.visible_characters = len($NinePatchRect/Chat.text)
 
 func next_script():
+	finished = false
 	current_dialogue_id += 1
 	
 	if current_dialogue_id >= len(dialogue):
