@@ -1870,7 +1870,7 @@ position = Vector2(561, -83)
 collision_mask = 4
 
 [node name="Enemy" parent="." instance=ExtResource("6_8vxrh")]
-position = Vector2(-35, 41)
+position = Vector2(145, -114)
 
 [node name="persigue" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_mkotx")]
 position = Vector2(757, 79)

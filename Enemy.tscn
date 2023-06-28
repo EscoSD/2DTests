@@ -1,7 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://c77fwxdqe5ptn"]
+[gd_scene load_steps=6 format=3 uid="uid://c77fwxdqe5ptn"]
 
 [ext_resource type="Script" path="res://Enemy.gd" id="1_qfwkc"]
 [ext_resource type="Texture2D" uid="uid://687jcs57eeso" path="res://Free Fantasy Dreamland - Sprites/Unity, Godot, GameMaker/Character_001.png" id="2_qds5q"]
+
+[sub_resource type="Gradient" id="Gradient_8pa8s"]
+offsets = PackedFloat32Array(0, 0.371429, 1)
+colors = PackedColorArray(1, 1, 1, 0.392157, 0.839216, 0.839216, 0.839216, 0.27451, 1, 1, 1, 0.117647)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1yyk2"]
+gradient = SubResource("Gradient_8pa8s")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hsd8a"]
 size = Vector2(18, 18)
@@ -15,7 +22,11 @@ script = ExtResource("1_qfwkc")
 collision_layer = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
-polygon = PackedVector2Array(0, 0, 141, -63, 144, 67)
+polygon = PackedVector2Array(0, 0, 145, -65, 144, 67)
+
+[node name="Polygon2D" type="Polygon2D" parent="Area2D"]
+texture = SubResource("GradientTexture1D_1yyk2")
+polygon = PackedVector2Array(1, -1, 146, -66, 145, 68)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -26,6 +37,9 @@ vframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_hsd8a")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
 
 [connection signal="body_entered" from="Area2D" to="." method="body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const speed = 50
+const speed = 0
 
 @export var player: Node2D
 @onready var nav_agent := $NavigationAgent2D as NavigationAgent2D
@@ -17,4 +17,3 @@ func make_path() ->void:
 
 func _on_timer_timeout():
 	make_path()
-	print_debug(player.global_position)
