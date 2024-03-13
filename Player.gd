@@ -2,6 +2,7 @@ extends CharacterBody2D
 #esto es un comentario hecho por el makako, Hesco tus muertos
 
 const SPEED = 100.0
+var vida = 10
 
 var input_vector:= Vector2.ZERO
 var sprint:= 0.0
@@ -34,8 +35,7 @@ func _physics_process(_delta):
 	)
 
 	move_and_slide()
-
-
+	
 func update_animation_parameters():
 	if velocity == Vector2.ZERO:
 		animation_tree['parameters/conditions/idle'] = true
@@ -56,3 +56,18 @@ func update_animation_parameters():
 		animation_tree['parameters/Idle/blend_position'] = input_vector
 		animation_tree['parameters/Walk/blend_position'] = input_vector
 		animation_tree['parameters/Run/blend_position'] = input_vector
+
+
+
+func _on_hurt_box_body_entered(body:Enemy):
+	body.cambiaPermiso()
+	vida -= 1;
+	if vida <= 0:
+		print("Has muerto")
+		mueres()
+		
+
+func mueres():
+	var padre = get_parent()
+	padre.finJuego()
+

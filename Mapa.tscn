@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cd120st2ja2d1"]
+[gd_scene load_steps=32 format=3 uid="uid://cd120st2ja2d1"]
 
 [ext_resource type="Texture2D" uid="uid://4l3ttfe8j0jj" path="res://Texture/TX Tileset Grass.png" id="1_4igrg"]
 [ext_resource type="Script" path="res://Mapa.gd" id="1_85ym5"]
@@ -8,10 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://c4ufn5skvqlp3" path="res://Texture/TX Tileset Wall.png" id="4_y04u4"]
 [ext_resource type="PackedScene" uid="uid://c77fwxdqe5ptn" path="res://Enemy.tscn" id="6_8vxrh"]
 [ext_resource type="PackedScene" uid="uid://0g0j8n2bnjwj" path="res://persigue.tscn" id="7_mkotx"]
+[ext_resource type="Texture2D" uid="uid://pio05axqarya" path="res://imagenes/Game Over.png" id="9_ltb1h"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_aemjy"]
+source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_jnhb1"]
+source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bjf72"]
 texture = ExtResource("1_4igrg")
@@ -739,26 +742,37 @@ texture = ExtResource("2_2wbby")
 sources/0 = SubResource("TileSetAtlasSource_de3ih")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_kfb3v"]
+source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_d8l8w"]
+source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_8rrlj"]
+source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_7wgmi"]
+source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_jwlma"]
+source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_sb3uu"]
+source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_mfhhn"]
+source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_hlfmv"]
+source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_50w74"]
+source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_j77qb"]
+source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_fk1oc"]
+source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i3j1r"]
 texture = ExtResource("2_3qtx7")
@@ -1838,6 +1852,7 @@ sources/0 = SubResource("TileSetAtlasSource_3k3y6")
 vertices = PackedVector2Array(50, -260, 1090, -261, 616, -197, 416, -197, 49, 612, 416, 6, 1105, 607, 529, 35, 616, 0.48175, 543, -70, 432, -71, 431, -182, 600, -181, 600, -71, 585, -70, 529, 5, 542, 35, 584.544, 35, 601, 35, 600, 2)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5), PackedInt32Array(6, 4, 5, 7), PackedInt32Array(2, 1, 6, 8), PackedInt32Array(9, 10, 11, 12, 13, 14), PackedInt32Array(5, 15, 7), PackedInt32Array(6, 7, 16), PackedInt32Array(9, 14, 17, 16), PackedInt32Array(6, 16, 17, 18), PackedInt32Array(8, 6, 18, 19)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(50, -260, 1090, -261, 1105, 607, 49, 612), PackedVector2Array(416, -197, 616, -197, 616, 0.48175, 600, 2, 601, 35, 584.544, 35, 585, -70, 600, -71, 600, -181, 431, -182, 432, -71, 543, -70, 542, 35, 529, 35, 529, 5, 416, 6)])
+source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_85ym5")
@@ -1879,3 +1894,57 @@ player = NodePath("../Player")
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 position = Vector2(-4, 1)
 navigation_polygon = SubResource("NavigationPolygon_ejhwv")
+
+[node name="GameOver" type="CanvasLayer" parent="."]
+process_mode = 3
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="GameOver"]
+offset_left = 227.0
+offset_top = -189.0
+offset_right = 267.0
+offset_bottom = -149.0
+scale = Vector2(16.9507, 14.8152)
+color = Color(0.52549, 0.423529, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="GameOver/ColorRect"]
+position = Vector2(20.2352, 23.5568)
+scale = Vector2(0.0268381, 0.0307065)
+texture = ExtResource("9_ltb1h")
+
+[node name="Button" type="Button" parent="GameOver/ColorRect/Sprite2D"]
+offset_left = -191.241
+offset_top = 320.933
+offset_right = -105.241
+offset_bottom = 351.933
+scale = Vector2(1.97748, 1.97748)
+theme_override_colors/font_pressed_color = Color(0, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 1, 1)
+text = "Continuar"
+
+[node name="pausa" type="CanvasLayer" parent="."]
+process_mode = 3
+
+[node name="ColorRect" type="ColorRect" parent="pausa"]
+modulate = Color(0.25098, 1, 0.258824, 0.639216)
+offset_left = 242.0
+offset_top = -234.0
+offset_right = 282.0
+offset_bottom = -194.0
+scale = Vector2(16.1977, 16.1977)
+
+[node name="volver" type="Button" parent="pausa/ColorRect"]
+modulate = Color(0, 1, 1, 1)
+layout_mode = 0
+offset_left = 5.12417
+offset_top = 14.4465
+offset_right = 91.1242
+offset_bottom = 45.4465
+scale = Vector2(0.349273, 0.349273)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 0, 0, 1)
+text = "Continuar"
+
+[connection signal="pressed" from="GameOver/ColorRect/Sprite2D/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="pausa/ColorRect/volver" to="." method="_on_volver_pressed"]

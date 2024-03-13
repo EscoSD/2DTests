@@ -12,7 +12,7 @@ config_version=5
 
 config/name="2DTests"
 run/main_scene="res://Mapa.tscn"
-config/features=PackedStringArray("4.0", "Forward Plus")
+config/features=PackedStringArray("4.2", "Forward Plus")
 run/max_fps=60
 config/icon="res://icon.svg"
 

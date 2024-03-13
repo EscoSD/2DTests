@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://6vokdhvp3t38"]
+
+[node name="hurtBox" type="Area2D"]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]

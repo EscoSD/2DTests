@@ -1,10 +1,11 @@
-[gd_scene load_steps=42 format=3 uid="uid://tvajlc7ltwi5"]
+[gd_scene load_steps=43 format=3 uid="uid://tvajlc7ltwi5"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_fibqe"]
 [ext_resource type="Texture2D" uid="uid://b40l58hgictv" path="res://Free Fantasy Dreamland - Sprites/Unity, Godot, GameMaker/Character_003.png" id="2_t0uon"]
+[ext_resource type="PackedScene" uid="uid://6vokdhvp3t38" path="res://hurt_box.tscn" id="3_5dlot"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7dcb8"]
-radius = 6.0
+radius = 5.0
 height = 20.0
 
 [sub_resource type="Animation" id="Animation_4veol"]
@@ -361,7 +362,9 @@ states/Walk/position = Vector2(792, 408)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_5rbwe"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_l64vp"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_6v1q4"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_w2cv3"), "Run", "Walk", SubResource("AnimationNodeStateMachineTransition_8hcrc"), "Walk", "Run", SubResource("AnimationNodeStateMachineTransition_driqg"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_lk708")]
 graph_offset = Vector2(-22, 167.339)
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_lay21"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t78yb"]
+radius = 9.0
+height = 26.0
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 3
@@ -386,12 +389,29 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2wkot")
+}
 tree_root = SubResource("AnimationNodeStateMachine_b75g3")
 anim_player = NodePath("../AnimationPlayer")
-parameters/playback = SubResource("AnimationNodeStateMachinePlayback_lay21")
 parameters/conditions/idle = false
 parameters/conditions/is_running = false
 parameters/conditions/is_walking = false
 parameters/Idle/blend_position = Vector2(0, 0)
 parameters/Run/blend_position = Vector2(0, 0)
 parameters/Walk/blend_position = Vector2(0, 0)
+
+[node name="hurtBox" parent="." instance=ExtResource("3_5dlot")]
+modulate = Color(1, 0.0117647, 0, 1)
+self_modulate = Color(1, 0, 0, 1)
+collision_mask = 3
+monitorable = true
+
+[node name="CollisionShape2D" parent="hurtBox" index="0"]
+position = Vector2(0, 3)
+shape = SubResource("CapsuleShape2D_t78yb")
+
+[connection signal="area_entered" from="hurtBox" to="." method="_on_hurt_box_area_entered"]
+[connection signal="body_entered" from="hurtBox" to="." method="_on_hurt_box_body_entered"]
+
+[editable path="hurtBox"]
